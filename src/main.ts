@@ -1,7 +1,19 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { createCustomElement } from '@angular/elements';
+import { createApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
 
-import { AppModule } from './app/app.module';
+(async () => {
 
+  const app = await createApplication({
+    providers: [
+      /* your global providers here */
+    ],
+  });
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  const toogleElement = createCustomElement(AppComponent, {
+    injector: app.injector,
+  });
+
+  customElements.define('app-component', toogleElement);
+
+})();
