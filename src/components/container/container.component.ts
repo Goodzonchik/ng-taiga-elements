@@ -4,10 +4,10 @@ import { TuiRootModule } from '@taiga-ui/core';
 
 @Component({
   standalone: true,
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less'],
+  templateUrl: './container.component.html',
+  styleUrls: ['./container.component.less'],
   imports: [TuiRootModule]
 })
-export class AppComponent {
+export class ContainerComponent {
   title = 'ng-taiga-elements';
 }

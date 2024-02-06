@@ -7,9 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="http://localhost:4200/styles.css"></head>
+
+  <style>
+    .wrapper {
+      margin: 150px auto;
+      border: 1px solid rgb(56, 56, 56);
+      width: 500px;
+      height: 600px;
+    }
+  </style>
 </head>
 <body>
-  <app-component></app-component>
+
+  <div class="wrapper">
+    <custom-container>
+      <h2 header>Заголовок блока</h2>
+
+      <div left>Левая палочка твикс</div>
+      <div right>Правая палочка твикс</div>
+    </custom-container>
+  </div>
+
+  
 
   <script src="http://localhost:4200/runtime.js" type="module"></script>
   <script src="http://localhost:4200/polyfills.js" type="module"></script>
