@@ -20,9 +20,7 @@
 <body>
 
   <div class="wrapper">
-    <custom-container>
-      <h2 header>Заголовок блока</h2>
-
+    <custom-container id="custom-container" title="Заголовок блока">
       <div left>Левая палочка твикс</div>
       <div right>Правая палочка твикс</div>
     </custom-container>
@@ -35,5 +33,13 @@
   <script src="http://localhost:4200/styles.js" defer=""></script>
   <script src="http://localhost:4200/vendor.js" type="module"></script>
   <script src="http://localhost:4200/main.js" type="module"></script>
+
+  <script>
+    const customContaner = document.getElementById('custom-container');
+
+    customContaner.addEventListener('updateTitle', () => {
+      customContaner.setAttribute('title', 'Новый заголовок блока');
+    })
+  </script>
 </body>
 </html>

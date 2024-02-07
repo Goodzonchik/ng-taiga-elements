@@ -2,8 +2,17 @@
   
   <div class="layout">
     <div class="header">
-      <ng-content select="[header]"></ng-content>
+      <h2>{{title}}</h2>
     </div>
+
+    <div class="row">
+      <button
+      tuiButton
+      (click)="onUpdateTitle()">
+        Обновить заголовок
+      </button>
+    </div>
+
     <div class="content">
         <div class="column">
           <ng-content select="[left]"></ng-content>
@@ -13,9 +22,4 @@
         </div>
     </div>
   </div>
-
- 
-
-
-  Я родился!!!
 </tui-root>

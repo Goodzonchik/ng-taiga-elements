@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { TuiRootModule } from '@taiga-ui/core';
+import {  TuiButtonModule, TuiRootModule } from '@taiga-ui/core';
 
 @Component({
   standalone: true,
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.less'],
-  imports: [TuiRootModule]
+  imports: [TuiRootModule, TuiButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush 
 })
 export class ContainerComponent {
-  title = 'ng-taiga-elements';
+  @Input() title = '';
+
+  @Output() updateTitle = new EventEmitter<void>();
+
+  onUpdateTitle() {
+    this.updateTitle.emit();
+  }
 }
