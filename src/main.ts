@@ -4,6 +4,7 @@ import { ContainerComponent } from './components/container/container.component';
 import { importProvidersFrom } from '@angular/core';
 import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
 import { TuiPushModule } from '@taiga-ui/kit';
+import { ParentProviderComponent } from './components/parent-provider/parent-provider.component';
 
 (async () => {
   const app = await createApplication({
@@ -12,15 +13,20 @@ import { TuiPushModule } from '@taiga-ui/kit';
         TuiRootModule,
         TuiDialogModule,
         TuiAlertModule,
-        TuiPushModule,
+        TuiPushModule
       ),
     ],
   });
 
-  const container = createCustomElement(ContainerComponent, {
-    injector: app.injector,
-  });
 
-  customElements.define('custom-container', container);
+  define('custom-container', ContainerComponent);
+  define('parent-provider', ParentProviderComponent);
 
+  function define(name: string, component: any) {
+    const element = createCustomElement(component, {
+      injector: app.injector,
+    });
+
+    customElements.define(name, element);
+  }
 })();

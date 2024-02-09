@@ -1,25 +1,51 @@
 <tui-root>
-  
   <div class="layout">
     <div class="header">
-      <h2>{{title}}</h2>
-    </div>
-
-    <div class="row">
-      <button
-      tuiButton
-      (click)="onUpdateTitle()">
-        Обновить заголовок
-      </button>
-    </div>
-
-    <div class="content">
-        <div class="column">
-          <ng-content select="[left]"></ng-content>
-        </div>
-        <div class="column">
-          <ng-content select="[right]"></ng-content>
-        </div>
+      <h2>{{ title }}</h2>
     </div>
   </div>
+
+  <table tuiTable>
+    <thead tuiThead>
+      <tr tuiThGroup>
+        <th *tuiHead="'name'" tuiTh>Название</th>
+        <th *tuiHead="'test'" tuiTh>Тест</th>
+      </tr>
+    </thead>
+    <tbody tuiTbody>
+      <tr>
+        <td>Обновление Input + Output</td>
+        <td>
+          <button tuiButton (click)="onUpdateTitle()">
+            Обновить заголовок
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">Проверка ng-content</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="content">
+            <div class="column">
+              <ng-content select="[left]"></ng-content>
+            </div>
+            <div class="column">
+              <ng-content select="[right]"></ng-content>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <!-- TODO max callstack size!!!!-->
+      <!--<tr>
+        <td>Проверка viewProvider</td>
+        <td>
+          <ng-component select="children">
+  
+          </ng-component>
+        </td>
+      </tr>-->
+    </tbody>
+  </table>
 </tui-root>
