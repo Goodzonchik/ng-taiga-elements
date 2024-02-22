@@ -1,0 +1,78 @@
+
+<tui-root>
+    <div>
+      <h3>Тест Input-параметра</h3>
+      <h2 class="title">{{ titleMessage }}</h2>
+      <h2 class="title-app">{{ titleMessage }}</h2>
+      <h2 class="title-local">{{ titleMessage }}</h2>
+    </div>
+  
+    <hr />
+  
+    <div class="row-button">
+      <ng-content select="[storage]"></ng-content>
+    </div>
+  
+    <div class="row-button">
+      <button tuiButton (click)="eventEmmit()">Тест эмита</button>
+  
+      <button tuiButton (click)="setGoogleAnalytic()">
+        Сохранить Google Analytic event
+      </button>
+    </div>
+  
+    <hr />
+  
+    <div>
+      <button
+        iconRight="tuiIconChevronDown"
+        tuiButton
+        type="button"
+        [tuiDropdown]="dropdownContent"
+        [tuiDropdownManual]="open"
+        (click)="onClick()"
+        (tuiActiveZoneChange)="onActiveZone($event)"
+        (tuiObscured)="onObscured($event)"
+      >
+        Choose
+        <ng-template #dropdownContent>
+          <div class="dropdown">But there is nothing to choose...</div>
+        </ng-template>
+      </button>
+    </div>
+  
+    <hr />
+  
+    <div>
+      <h3>События window</h3>
+      <h2>winsowSize = {{ winsowSize }}</h2>
+  
+      <h3>Получение utm_меток из url</h3>
+      <h2>parsedSearchParams = {{ parsedSearchParams }}</h2>
+    </div>
+  
+    <div>
+      <h3>Проверка ng-template</h3>
+      <div class="layout">
+        <div class="column">
+          <ng-content select="[first]"></ng-content>
+        </div>
+        <div class="column">
+          <ng-content select="[second]"></ng-content>
+        </div>
+      </div>
+  
+      <ng-content select="[license]"></ng-content>
+    </div>
+  
+    <div>
+      <h3>Проверка динамического размера</h3>
+      <button tuiButton (click)="openAccordion()">openAccordion</button>
+      <div *ngIf="isOpened">sdfsfd</div>
+    </div>
+  
+    <div>
+      <h3>Проверка другого компонента</h3>
+      <modal></modal>
+    </div>
+  

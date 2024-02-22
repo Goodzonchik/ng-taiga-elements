@@ -1,0 +1,39 @@
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .row-button {
+    margin: 20px 0;
+  
+    button {
+      margin-right: 20px;
+    }
+  }
+  
+  .column {
+    width: 100%;
+    background-color: #9292dd;
+  
+    &:hover {
+      background-color: rgb(199, 255, 162);
+    }
+  }
+  
+  .layout {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border: 1px solid rgb(9, 27, 148);
+  }
+  
+  .title-local {
+    color: green;
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .title-local {
+      color: black;
+    }
+  }

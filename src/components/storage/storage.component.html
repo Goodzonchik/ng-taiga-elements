@@ -1,0 +1,21 @@
+
+<div class="row-button">
+    <h3>работа с localStorage</h3>
+  
+    <button tuiButton (click)="clearStorage()">clear</button>
+  
+    <tui-dropdown-host>
+      <tui-select tuiTextfieldSize="s" [formControl]="email">
+        Character
+        <input placeholder="Choose your hero" tuiTextfield />
+        <tui-data-list-wrapper
+          *tuiDataList
+          [items]="items"
+        ></tui-data-list-wrapper>
+      </tui-select>
+    </tui-dropdown-host>
+  
+    <button tuiButton (click)="setLocalStorage()">set</button>
+  
+    <button tuiButton (click)="getFromlocalStorage()">get</button>
+  </div>
