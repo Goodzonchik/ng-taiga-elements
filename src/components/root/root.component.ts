@@ -23,10 +23,10 @@ import {
   } from '@taiga-ui/core';
   import { TuiInputModule } from '@taiga-ui/kit';
   
-  import { UtmService } from '../utm.service';
+
   import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   import { TuiDropdownHostModule } from '@taiga-ui/cdk';
-  import { Test3Component } from '../test3/test3.component';
+import { UtmService } from 'src/utm.service';
   
   type IWindow = {
     dataLayer: any[];
@@ -37,8 +37,8 @@ import {
   
   @Component({
     standalone: true,
-    templateUrl: './test.component.html',
-    styleUrls: ['./test.component.less'],
+    templateUrl: './root.component.html',
+    styleUrls: ['./root.component.less'],
     imports: [
       NgIf,
       AsyncPipe,
@@ -50,13 +50,12 @@ import {
       TuiInputModule,
       TuiDropdownHostModule,
       TuiRootModule,
-      Test3Component,
     ],
     providers: [UtmService],
     changeDetection: ChangeDetectionStrategy.OnPush,
     schemas: [NO_ERRORS_SCHEMA],
   })
-  export class TestComponent implements AfterContentInit {
+  export class RootComponent implements AfterContentInit {
     #alertService = inject<TuiAlertService>(TuiAlertService);
     #dialogService = inject<TuiDialogService>(TuiDialogService);
     #window = inject<IWindow>(WINDOW);
@@ -65,12 +64,12 @@ import {
     parsedSearchParams = this.#utmService.parseUtm(this.#window.location.search);
     isOpened = false;
   
-    @Input() titleMessage: string;
+    @Input() titleMessage: string = 'default title';
   
     @Output() clickButton = new EventEmitter<string>();
   
     @HostListener('window:resize', ['$event'])
-    onResize(event) {
+    onResize(event: any) {
       this.winsowSize = event.target.innerWidth;
     }
   
@@ -114,13 +113,13 @@ import {
       this.open = !this.open;
     }
   
-    onObscured(obscured: boolean): void {
+    onObscured(obscured: any): void {
       if (obscured) {
         this.open = false;
       }
     }
   
-    onActiveZone(active: boolean): void {
+    onActiveZone(active: any): void {
       this.open = active && this.open;
     }
   

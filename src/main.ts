@@ -3,62 +3,30 @@ import { createApplication } from '@angular/platform-browser';
 import { ContainerComponent } from './components/container/container.component';
 import { importProvidersFrom } from '@angular/core';
 import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
-import { TuiPushModule } from '@taiga-ui/kit';
 import { ParentProviderComponent } from './components/parent-provider/parent-provider.component';
 
-(async () => {
-  const app = await createApplication({
-    providers: [
-      importProvidersFrom(
-        TuiRootModule,
-        TuiDialogModule,
-        TuiAlertModule,
-        TuiPushModule
-      ),
-    ],
-  });
-
-
-  define('custom-container', ContainerComponent);
-  define('parent-provider', ParentProviderComponent);
-
-  function define(name: string, component: any) {
-    const element = createCustomElement(component, {
-      injector: app.injector,
-    });
-
-    customElements.define(name, element);
-  }
-})();
-
-
-/* import { createCustomElement } from '@angular/elements';
-import { createApplication } from '@angular/platform-browser';
-//import { BrowserModule, createApplication } from '@angular/platform-browser';
-import { TestComponent } from './app/test/test.component';
-import { StorageComponent } from './app/storage/storage.component';
-import { Test3Component } from './app/test3/test3.component';
-import { ModalComponent } from './app/modal/modal.component';
-import { importProvidersFrom } from '@angular/core';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
+import { RootComponent } from './components/root/root.component';
+import { StorageComponent } from './components/storage/storage.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 (async () => {
   const otherApp = await createApplication({
-    providers: [importProvidersFrom(TuiRootModule), provideAnimations()],
+    providers: [ provideAnimations()],
   });
 
   const appRoot = await createApplication({
     providers: [
-      importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule),
+      importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule), // нужно только для одного компонента, который содержит root, нужен один чтобы открывать модалки
       provideAnimations(),
     ],
   });
 
-  createAndDefineApp(TestComponent, 'test-component', appRoot);
+
+  createAndDefineApp(ContainerComponent, 'custom-container', appRoot);
+  createAndDefineApp(ParentProviderComponent, 'parent-provider', otherApp);
+  createAndDefineApp(RootComponent, 'root-component', appRoot);
   createAndDefineApp(StorageComponent, 'cu-storage', otherApp);
-  createAndDefineApp(Test3Component, 'license-modal', otherApp);
   createAndDefineApp(ModalComponent, 'my-modal', appRoot);
 
   function createAndDefineApp(element: any, registryName: string, app: any) {
@@ -68,7 +36,4 @@ import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
 
     customElements.define(registryName, el);
   }
-})(); */
-
-// DOC
-// то что будет в registry это будет тегом для компонента.
+})();

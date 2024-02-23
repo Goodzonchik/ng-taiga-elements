@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,14 +8,14 @@ import {
 } from '@angular/core';
 import { TuiTableModule } from '@taiga-ui/addon-table';
 
-import { TuiButtonModule, TuiRootModule } from '@taiga-ui/core';
+import { TuiButtonModule } from '@taiga-ui/core';
 import { PARENT_PROVIDER_TOKEN } from 'src/parent-provider.token';
 
 @Component({
   standalone: true,
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.less'],
-  imports: [NgIf, NgFor, TuiRootModule, TuiButtonModule, TuiTableModule],
+  imports: [NgIf, NgFor, JsonPipe, TuiButtonModule, TuiTableModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
@@ -31,9 +31,15 @@ import { PARENT_PROVIDER_TOKEN } from 'src/parent-provider.token';
   ],
 })
 export class ContainerComponent {
+  config = null;
+
   @Input() title = '';
 
   @Output() updateTitle = new EventEmitter<void>();
+
+  constructor(){
+    this.config = (window as any).config
+  }
 
   onUpdateTitle() {
     this.updateTitle.emit();

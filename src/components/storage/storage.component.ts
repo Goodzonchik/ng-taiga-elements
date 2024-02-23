@@ -35,6 +35,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StorageComponent {
+  localStorageValue = ''
+
+
   email = new FormControl('mail@mail.ru');
 
   items = [
@@ -51,7 +54,9 @@ export class StorageComponent {
   }
 
   setLocalStorage() {
-    localStorage.setItem('emailValue', this.email.value);
+    localStorage.setItem('emailValue', this.email?.value || '');
+
+    this.localStorageValue = localStorage.getItem('emailValue') || '';
   }
 
   getFromlocalStorage() {
