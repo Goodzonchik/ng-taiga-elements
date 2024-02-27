@@ -1,6 +1,6 @@
 
 import { ChangeDetectionStrategy, Component, inject, } from '@angular/core';
-import { PARENT_PROVIDER_TOKEN } from 'src/parent-provider.token';
+import { PARENT_PROVIDER_TOKEN } from 'src/tokens/parent-provider.token';
 
 
 @Component({
