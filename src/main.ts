@@ -25,7 +25,7 @@ import { ModalComponent } from './components/modal/modal.component';
 
   createAndDefineApp(ContainerComponent, 'test-container', appRoot); // container - не валидное имя
   createAndDefineApp(ParentProviderComponent, 'parent-provider', otherApp);
-  createAndDefineApp(RootComponent, 'tui-root', appRoot); // root - не валидное имя
+  createAndDefineApp(RootComponent, 'test-root', appRoot); // root - не валидное имя, нельзя также называть tui-root
   createAndDefineApp(StorageComponent, 'test-storage', otherApp); // storage - не валидное имя
   createAndDefineApp(ModalComponent, 'test-modal', appRoot); // modal - не валидное имя
 

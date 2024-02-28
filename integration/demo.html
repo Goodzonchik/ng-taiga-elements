@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>NgTaigaElements</title>
@@ -21,64 +22,66 @@
       border: 1px solid rgb(56, 56, 56);
       width: 500px;
       height: 600px;
-  }
+    }
 
-  .wrapper{
-    --tui-primary: red;
-  }
+    .wrapper {
+      --tui-primary: red;
+    }
 
-  .current-page {
-    font-size: 20px;
-    line-height: 26px;
-    text-align: center;
-    width: 50opx;
-    margin: 50px auto;
-  }
+    .current-page {
+      font-size: 20px;
+      line-height: 26px;
+      text-align: center;
+      width: 50opx;
+      margin: 50px auto;
+    }
 
-  .page-color,
-  .main-title-color,
-  .component-title-color {
-    color: red;
-  }
+    .page-color,
+    .main-title-color,
+    .component-title-color {
+      color: red;
+    }
   </style>
-    <link rel="stylesheet" href="http://localhost:4200/styles.css"></head>
+  <!-- Переопределяет шрифты на странице -->
+  <link rel="stylesheet" href="http://localhost:4200/styles.css">
 </head>
+
 <body>
   <div class="container">
 
-  <script>
-    var config = {
-      someField: "someField",
-      formName: "formName",
-    };
-  </script>
+    <script>
+      var config = {
+        someField: "someField",
+        formName: "formName",
+      };
+    </script>
 
-  <div class="wrapper">
-    <test-container id="custom-container" title="Заголовок блока">
-      <div left>Левая палочка твикс</div>
-      <div right>Правая палочка твикс</div>
+    <div class="wrapper">
+      <test-container id="custom-container" title="Заголовок блока">
+        <div left>Левая палочка твикс</div>
+        <div right>Правая палочка твикс</div>
 
-      
-      <parent-provider pprovider></parent-provider>
-      
+
+        <parent-provider pprovider></parent-provider>
+
+        <test-modal modals></test-modal>
+
+        <test-storage storage></test-storage>
+      </test-container>
+    </div>
+
+    <div class="wrapper-second">
       <test-modal modals></test-modal>
-      
-      <test-storage storage></test-storage>
-    </test-container>
-  </div>
+      <div class="current-page">Местный шрифт!!!</div>
 
-  <div class="wrapper-second">
-    <test-modal modals></test-modal>
-    <div class="current-page">Местный шрифт!!!</div>
-
-    <div class="page-color">Color test</div>
-    <div class="main-title-color">Color test</div>
-    <div class="component-title-color">Color test</div>
+      <div class="page-color">Color test</div>
+      <div class="main-title-color">Color test</div>
+      <div class="component-title-color">Color test</div>
+    </div>
   </div>
-</div>
 
   <!-- Единственный экземпляр tui-root для работы с диалогами -->
-  <tui-root></tui-root>
+  <test-root></test-root>
   <script src="http://localhost:4200/runtime.js" type="module"></script>
   <script src="http://localhost:4200/polyfills.js" type="module"></script>
   <script src="http://localhost:4200/styles.js" defer=""></script>
@@ -93,4 +96,5 @@
     })
   </script>
 </body>
+
 </html>
