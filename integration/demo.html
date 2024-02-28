@@ -9,9 +9,15 @@
 
 
   <style>
+    .container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 300px;
+    }
+
     .wrapper,
     .wrapper-second {
-      margin: 150px auto;
       border: 1px solid rgb(56, 56, 56);
       width: 500px;
       height: 600px;
@@ -38,6 +44,7 @@
     <link rel="stylesheet" href="http://localhost:4200/styles.css"></head>
 </head>
 <body>
+  <div class="container">
 
   <script>
     var config = {
@@ -68,8 +75,8 @@
     <div class="main-title-color">Color test</div>
     <div class="component-title-color">Color test</div>
   </div>
+</div>
 
- 
   <!-- Единственный экземпляр tui-root для работы с диалогами -->
   <tui-root></tui-root>
   <script src="http://localhost:4200/runtime.js" type="module"></script>
