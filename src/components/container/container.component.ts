@@ -55,7 +55,7 @@ export class ContainerComponent {
     this.config = (window as any).config;
     this.winsowSize = window.innerWidth;
   }
-
+  
   onUpdateTitle() {
     this.updateTitle.emit();
   }

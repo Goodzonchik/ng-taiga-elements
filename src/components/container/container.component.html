@@ -1,78 +1,84 @@
-  <div class="layout">
-    <div class="header">
-      <h2>{{ title }}</h2>
-    </div>
+<div class="layout">
+  <div class="header">
+    <h2>{{ title }}</h2>
   </div>
+</div>
 
-  <table tuiTable>
-    <thead tuiThead>
-      <tr tuiThGroup>
-        <th *tuiHead="'name'" tuiTh>Название</th>
-        <th *tuiHead="'test'" tuiTh>Тест</th>
-      </tr>
-    </thead>
-    <tbody tuiTbody>
-      <tr>
-        <td>Обновление Input + Output</td>
-        <td>
-          <button tuiButton (click)="onUpdateTitle()">
-            Обновить заголовок
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">Проверка ng-content</td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <div class="content">
-            <div class="column">
-              <ng-content select="[left]"></ng-content>
-            </div>
-            <div class="column">
-              <ng-content select="[right]"></ng-content>
-            </div>
+<table tuiTable>
+  <thead tuiThead>
+    <tr tuiThGroup>
+      <th *tuiHead="'name'" tuiTh>Название</th>
+      <th *tuiHead="'test'" tuiTh>Тест</th>
+    </tr>
+  </thead>
+  <tbody tuiTbody>
+    <tr>
+      <td>Обновление Input + Output</td>
+      <td>
+        <button tuiButton (click)="onUpdateTitle()">Обновить заголовок</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">Проверка ng-content</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="content">
+          <div class="column">
+            <ng-content select="[left]"></ng-content>
           </div>
-        </td>
-      </tr>
+          <div class="column">
+            <ng-content select="[right]"></ng-content>
+          </div>
+        </div>
+      </td>
+    </tr>
 
-      <tr>
-        <td>Проверка viewProvider</td>
-        <td>
-          <ng-content select="[pprovider]"> </ng-content>
-        </td>
-      </tr>
-      <tr>
-        <td>Проверка модальных окон</td>
-        <td>
-          <ng-content select="[modals]"> </ng-content>
-        </td>
-      </tr>
-      <tr>
-        <td>Проверка работы с url</td>
-        <td>
-          {{urlParams}}
-        </td>
-      </tr>
-      <tr>
-        <td>Проверка mediaquery</td>
-        <td class="query-test">
-          Уменьши меня меньше 600px
-        </td>
-      </tr>
-      <tr>
-        <td>Проверка resize</td>
-        <td>
-          winsowSize = {{winsowSize}}
-        </td>
-      </tr>
-      <tr>
-        <td>Проверка получения объекта как конфиг</td>
-        <td>
-          {{config | json}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  
+    <tr>
+      <td>Проверка viewProvider</td>
+      <td>
+        <ng-content select="[pprovider]"> </ng-content>
+      </td>
+    </tr>
+    <tr>
+      <td>Проверка модальных окон</td>
+      <td>
+        <ng-content select="[modals]"> </ng-content>
+      </td>
+    </tr>
+    <tr>
+      <td>Проверка работы с url</td>
+      <td>
+        {{ urlParams }}
+      </td>
+    </tr>
+    <tr>
+      <td>Проверка mediaquery</td>
+      <td class="query-test">Уменьши меня меньше 600px</td>
+    </tr>
+    <tr>
+      <td>Проверка resize</td>
+      <td>winsowSize = {{ winsowSize }}</td>
+    </tr>
+    <tr>
+      <td>Проверка получения объекта как конфиг</td>
+      <td>
+        {{ config | json }}
+      </td>
+    </tr>
+    <tr>
+      <td>Проверка цвета</td>
+      <td>
+        <div class="title-color">Color test</div>
+        <div class="main-title-color">Color test</div>
+        <div class="component-title-color">Color test</div>
+      </td>
+    </tr>
+    <tr>
+      <td>Проверка работы со storage</td>
+      <td>
+        <ng-content select="[storage]"> </ng-content>
+      </td>
+    </tr>
+  </tbody>
+</table>

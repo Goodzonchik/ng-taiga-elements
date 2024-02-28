@@ -6,19 +6,20 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="http://localhost:4200/styles.css"></head>
+
 
   <style>
-    .wrapper {
+    .wrapper,
+    .wrapper-second {
       margin: 150px auto;
       border: 1px solid rgb(56, 56, 56);
       width: 500px;
       height: 600px;
-
-    --tui-primary: red;
   }
 
-  
+  .wrapper{
+    --tui-primary: red;
+  }
 
   .current-page {
     font-size: 20px;
@@ -27,7 +28,14 @@
     width: 50opx;
     margin: 50px auto;
   }
+
+  .page-color,
+  .main-title-color,
+  .component-title-color {
+    color: red;
+  }
   </style>
+    <link rel="stylesheet" href="http://localhost:4200/styles.css"></head>
 </head>
 <body>
 
@@ -39,20 +47,31 @@
   </script>
 
   <div class="wrapper">
-    <custom-container id="custom-container" title="Заголовок блока">
+    <test-container id="custom-container" title="Заголовок блока">
       <div left>Левая палочка твикс</div>
       <div right>Правая палочка твикс</div>
 
       
       <parent-provider pprovider></parent-provider>
-      <my-modal modals></my-modal>
-    </custom-container>
+      
+      <test-modal modals></test-modal>
+      
+      <test-storage storage></test-storage>
+    </test-container>
   </div>
 
-  <my-modal modals></my-modal>
-  <div class="current-page">Местный шрифт!!!</div>
+  <div class="wrapper-second">
+    <test-modal modals></test-modal>
+    <div class="current-page">Местный шрифт!!!</div>
 
-  <root-component></root-component>
+    <div class="page-color">Color test</div>
+    <div class="main-title-color">Color test</div>
+    <div class="component-title-color">Color test</div>
+  </div>
+
+ 
+  <!-- Единственный экземпляр tui-root для работы с диалогами -->
+  <tui-root></tui-root>
   <script src="http://localhost:4200/runtime.js" type="module"></script>
   <script src="http://localhost:4200/polyfills.js" type="module"></script>
   <script src="http://localhost:4200/styles.js" defer=""></script>

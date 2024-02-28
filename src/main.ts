@@ -23,11 +23,11 @@ import { ModalComponent } from './components/modal/modal.component';
   });
 
 
-  createAndDefineApp(ContainerComponent, 'custom-container', appRoot);
+  createAndDefineApp(ContainerComponent, 'test-container', appRoot); // container - не валидное имя
   createAndDefineApp(ParentProviderComponent, 'parent-provider', otherApp);
-  createAndDefineApp(RootComponent, 'root-component', appRoot);
-  createAndDefineApp(StorageComponent, 'cu-storage', otherApp);
-  createAndDefineApp(ModalComponent, 'my-modal', appRoot);
+  createAndDefineApp(RootComponent, 'tui-root', appRoot); // root - не валидное имя
+  createAndDefineApp(StorageComponent, 'test-storage', otherApp); // storage - не валидное имя
+  createAndDefineApp(ModalComponent, 'test-modal', appRoot); // modal - не валидное имя
 
   function createAndDefineApp(element: any, registryName: string, app: any) {
     const el = createCustomElement(element, {
