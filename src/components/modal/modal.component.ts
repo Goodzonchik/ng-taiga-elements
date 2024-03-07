@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
 
 import {
   TuiAlertModule,
@@ -14,7 +14,7 @@ import {
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.less'],
   imports: [TuiDialogModule, TuiAlertModule, TuiButtonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent {
   #alertService = inject<TuiAlertService>(TuiAlertService);

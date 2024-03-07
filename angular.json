@@ -34,7 +34,7 @@
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [],
           },
           "configurations": {
             "production": {
@@ -55,7 +55,7 @@
             "development": {
               "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
+              "vendorChunk": false,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

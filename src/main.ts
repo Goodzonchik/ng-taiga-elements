@@ -22,8 +22,12 @@ import { ModalComponent } from './components/modal/modal.component';
     ],
   });
 
+  //lazyChunk
+  () => import('./components/container/container.component').then(m => m.ContainerComponent).then(
+    component =>   createAndDefineApp(component, 'test-container', appRoot)
+  );
 
-  createAndDefineApp(ContainerComponent, 'test-container', appRoot); // container - не валидное имя
+ // createAndDefineApp(ContainerComponent, 'test-container', appRoot); // container - не валидное имя
   createAndDefineApp(ParentProviderComponent, 'parent-provider', otherApp);
   createAndDefineApp(RootComponent, 'test-root', appRoot); // root - не валидное имя, нельзя также называть tui-root
   createAndDefineApp(StorageComponent, 'test-storage', otherApp); // storage - не валидное имя
