@@ -15,6 +15,16 @@ import { PARENT_PROVIDER_TOKEN } from 'src/tokens/parent-provider.token';
     },
   ],
 })
-export class ParentProviderComponent {
+export class ParentProviderComponent extends HTMLElement  {
  parentProvider = inject(PARENT_PROVIDER_TOKEN)
+
+ constructor(){
+  super();
+  
+  alert('I am alivka')
+ }
+
+ connectedCallback() {
+  console.log('connected');
+}
 }

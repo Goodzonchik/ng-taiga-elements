@@ -1,14 +1,14 @@
 import { createCustomElement } from '@angular/elements';
 import { createApplication } from '@angular/platform-browser';
-import { ContainerComponent } from './components/container/container.component';
 import { importProvidersFrom } from '@angular/core';
 import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
-import { ParentProviderComponent } from './components/parent-provider/parent-provider.component';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { RootComponent } from './components/root/root.component';
 import { StorageComponent } from './components/storage/storage.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ContainerComponent } from './components/container/container.component';
+import { ParentProviderComponent } from './components/parent-provider/parent-provider.component';
 
 (async () => {
   const otherApp = await createApplication({
@@ -22,12 +22,16 @@ import { ModalComponent } from './components/modal/modal.component';
     ],
   });
 
-  //lazyChunk
+   //lazyChunk
   () => import('./components/container/container.component').then(m => m.ContainerComponent).then(
     component =>   createAndDefineApp(component, 'test-container', appRoot)
   );
 
- // createAndDefineApp(ContainerComponent, 'test-container', appRoot); // container - не валидное имя
+  () => import('./components/parent-provider/parent-provider.component').then(m => m.ParentProviderComponent).then(
+    component =>   createAndDefineApp(component, 'parent-provider', otherApp)
+  ); 
+
+  createAndDefineApp(ContainerComponent, 'test-container', appRoot); // container - не валидное имя
   createAndDefineApp(ParentProviderComponent, 'parent-provider', otherApp);
   createAndDefineApp(RootComponent, 'test-root', appRoot); // root - не валидное имя, нельзя также называть tui-root
   createAndDefineApp(StorageComponent, 'test-storage', otherApp); // storage - не валидное имя

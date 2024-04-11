@@ -60,12 +60,9 @@
     </script>
 
     <div class="wrapper">
-      <test-container id="custom-container" title="Заголовок блока">
+      <test-container id="custom-container" title="Тестовый контейнер">
         <div left>Левая палочка твикс</div>
         <div right>Правая палочка твикс</div>
-
-
-        <parent-provider pprovider></parent-provider>
 
         <test-modal modals></test-modal>
 
@@ -82,29 +79,49 @@
     </div>
   </div>
 
+  
+
   <!-- Единственный экземпляр tui-root для работы с диалогами -->
   <!-- Иначе будет 2+ overlay раюотаающих одновременно -->
   <test-root></test-root>
   
   <script src="http://localhost:4200/runtime.js" type="module"></script>
   <script src="http://localhost:4200/polyfills.js" type="module"></script>
-  <script src="http://localhost:4200/styles.js" defer=""></script>
+  <script src="http://localhost:4200/styles.js" type="module"></script>
   <script src="http://localhost:4200/main.js" type="module"></script>
   
+  <script src="http://localhost:4200/src_components_parent-provider_parent-provider_component_ts.js" type="module"></script>
   <script src="http://localhost:4200/src_components_container_container_component_ts.js" type="module"></script>
+  
+  
 
   <script>
     let modal = document.createElement("test-modal");
-    document.getElementById('wrapper-second').append(modal);
+    document.getElementById('wrapper-second').appendChild(modal);
+
 
 
     const customContaner = document.getElementById('custom-container');
 
-    customContaner.addEventListener('updateTitle', () => {
-      customContaner.setAttribute('title', 'Новый заголовок блока');
+    customContaner.addEventListener('updateTitle', (data) => {
+      customContaner.setAttribute('title', `Новый заголовок блока #${data.detail}`);
     })
 
-    console.log(window.customElements);
+   
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      console.log('I am loaded DOMContentLoaded');
+
+   
+
+      setTimeout(() => {
+        for(let i = 0; i < 10; i++) {
+          let pp = document.createElement("parent-provider");
+       document.getElementById('wrapper-second').appendChild(pp);    
+        }
+      }, 2000)
+      
+    }); 
   </script>
 </body>
 

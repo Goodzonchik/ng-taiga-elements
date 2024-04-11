@@ -39,12 +39,13 @@ export class ContainerComponent {
 
   urlParams = this.#urlService.parseParams(window.location.href);
   winsowSize = 0;
+  clickCounter = 0;
 
   config = null;
 
   @Input() title = '';
 
-  @Output() updateTitle = new EventEmitter<void>();
+  @Output() updateTitle = new EventEmitter<number>();
 
   @HostListener('window:resize', ['$event'])
     onResize(event: any) {
@@ -55,8 +56,14 @@ export class ContainerComponent {
     this.config = (window as any).config;
     this.winsowSize = window.innerWidth;
   }
+
+
+  connectedCallback() {
+    console.log('connected');
+  }
   
   onUpdateTitle() {
-    this.updateTitle.emit();
+    this.clickCounter++;
+    this.updateTitle.emit(this.clickCounter);
   }
 }
